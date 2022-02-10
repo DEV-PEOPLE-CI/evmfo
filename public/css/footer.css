@@ -1,0 +1,120 @@
+
+/***********************/
+footer {
+  margin-top: 5rem;
+  background: black;
+  color: white;
+}
+
+footer .end{
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  padding: 3rem 2rem;
+  gap: 2rem;
+}
+footer .end .contact div{
+  display: flex;   
+  gap: 1.5rem; 
+  font-weight: 600;
+  font-size: 15px;
+}
+footer .end .contact h3{
+  display: flex;
+  justify-content: center;
+}
+footer .end .info{
+  display: flex;
+  flex-direction: column;
+}
+footer .end .info h3{
+  display: flex;
+  justify-content: center;
+
+}
+footer .end .info div{
+  display: flex;   
+  gap: 15px;    
+}
+footer .end .contact div span h3{ 
+  font-weight: 300;
+  font-size: 15px;
+}
+footer .end .info div span{
+  font-size: 15px;
+  text-transform: uppercase;
+}
+footer .end .info div p{
+  font-weight: 300;
+  font-size: 15px;
+}
+
+.ncpr{
+  display: flex;
+  justify-content: center;
+  background: black;
+  color: #f1f1f1;
+  padding: 2rem 0;
+
+}
+.number_eveil li{
+  list-style-type: none;
+}
+.number_eveil h4{
+  text-align: center;
+  
+}
+.number_eveil li a{
+  text-align: center;
+}
+
+@media only screen and (max-width: 962px) {
+  footer .end{
+      padding: 2rem 1rem;
+      gap: 0.7rem;
+  }
+}
+ 
+@media only screen and (max-width: 887px) {
+  footer .end{
+      padding: 2rem .7rem;
+      gap: 0rem;
+      font-size: .7rem;
+  }
+  .info div p:nth-last-child() a{
+      font-size: 0.3rem;
+  }
+}
+@media only screen and (max-width: 845px) {
+  .info div {
+    flex-direction: column;
+  }
+  footer .end .contact div { 
+    gap: .7rem; 
+  }
+  footer .end .contact div span{ 
+    font-size: 0.7rem;
+  }
+}
+@media only screen and (max-width: 445px) {
+  footer .end .contact div {
+    flex-direction: column;
+  }
+  footer .end .contact div { 
+    gap: 0rem; 
+  }
+  footer .end .contact div span h3{ 
+    font-weight: 300;
+    font-size: 1.5rem;
+  }
+ 
+  
+  
+}
+@media only screen and (max-width: 969px) {
+  .sect2 .menu,footer{
+      
+  }  
+}
