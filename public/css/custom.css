@@ -1,0 +1,145 @@
+
+  /*custom*/
+
+  body{
+   background: #131313;
+    max-width: 100%;
+  }
+
+
+ .pub{
+  cursor: pointer;
+ }
+  #dev{
+      cursor: pointer;
+  }
+.icon_action i{
+    padding-right: 10px;
+}
+
+.sect3{
+    display: flex;
+    flex-direction: column;
+    gap: 3rem;
+    width: 80%;
+    height: auto;
+    text-align: center;
+    margin: 0px;
+    align-items: center;
+    rgin-bottom: 3rem;
+}
+.txt{
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 4rem;
+    color: white;
+    margin-bottom: 20px;
+}
+.btn-prec{
+    width: 1rem;
+    height: 1rem;
+    background: violet;
+    border-radius: 50%;
+    display: flex;
+}
+.btn-live
+{
+    width: 15px;
+    height: 15px;
+    background: red;
+    border-radius: 50%;
+
+}
+
+.pub{
+
+    color: #f1f1f1;
+    width: 100%;
+    height: 200px;
+    margin-bottom: 20px;
+    box-shadow: 5px 5px 12px 0 rgba(0,0,0,0.2);
+    border: solid 3px #323334d4;
+    margin: 50px 20px 50px 20px;
+}
+.bande{
+    margin: 20px 0px 20px 0px;
+}
+
+.f{
+    width: 100%;
+    color: red;
+    background: white;
+}
+
+.pub_first_mobile{
+    display: none;
+}
+.first_link{
+    font-size: 10px;
+}
+.body_content{
+    padding:0px 100px 0px 100px;
+}
+.hero
+{
+
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+    width: 100%;
+    height: 200px;
+    max-width: 100%;
+}
+
+  @media only screen and (min-width: 500px)
+  {
+      #hero_mobile{
+          display: none;
+      }
+  }
+@media only screen and (max-width: 500px)
+{
+    #hero_mobile{
+        display: initial;
+    }
+    .body_content{
+        padding: 15px;
+    }
+    #hero_pc{
+        display: none;
+    }
+
+    .hero{
+        height: 20%;
+    }
+    .bande img{
+        width: 20px;
+        font-size: 20px;
+        height: 20px;
+    }
+    .bande h4{
+        font-size: 15px;
+    }
+    .pub{
+        height: 150px;
+        padding: 0px;
+    }
+    .pub_first_mobile{
+        display: initial;
+    }
+    .pub_first_pc{
+        display: none;
+    }
+    .pub img{
+        height: 100% ;
+
+    }
+    .br_menu{
+        display: none;
+    }
+    .first_link{
+        font-size: 15px;
+    }
+}
+

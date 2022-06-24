@@ -1,0 +1,127 @@
+function call(id) {
+    document.getElementById("video_show").innerHTML="<video  src='' style='max-width: 100%' controls controlsList='nodownload'>\n" +
+        "                   </video>"
+    id_get=id
+    var xhttp = new XMLHttpRequest();
+    xhttp.onreadystatechange = function() {
+        if (this.readyState == 4 && this.status == 200) {
+            document.getElementById("video_show").innerHTML=this.responseText;
+
+        }
+    };
+    xhttp.open("GET", 'call_controller/'+id_get, true);
+    xhttp.send();
+}
+
+function play(id)
+{
+    id_get=id
+    var xhttp = new XMLHttpRequest();
+    xhttp.onreadystatechange = function() {
+        if (this.readyState == 4 && this.status == 200) {
+
+
+
+            document.getElementById("player1").src=this.responseText;
+        }
+    };
+
+    xhttp.open("GET", 'call_son/'+id_get, true);
+    xhttp.send();
+}
+
+function send_comments()
+{
+    full_name=document.getElementById('fullname').value;
+    media_id=document.getElementById('hidden_input').value;
+    content=document.getElementById('msg').value;
+    var xhttp = new XMLHttpRequest();
+    xhttp.onreadystatechange = function() {
+        if (this.readyState == 4 && this.status == 200) {
+
+            alert('vous avez commenté');
+        }
+    };
+    xhttp.open("get", 'send_commentaire/'+media_id+'/'+full_name+'/'+content, true);
+    xhttp.send();
+}
+
+function like(id)
+{
+    console.log("use")
+    var xhttp = new XMLHttpRequest();
+    xhttp.onreadystatechange = function() {
+        if (this.readyState == 4 && this.status == 200) {
+            document.getElementById("dev").style.color='skyblue';
+            //document.getElementById("willy").innerHTML=this.responseText;
+            /*if (this.responseText == "true") {
+                console.log("like")
+
+                document.getElementById("dev").style.color='skyblue';
+            }else{
+                console.log("dislke")
+                document.getElementById("dev").style.color='white';
+
+            }*/
+        }
+    };
+    xhttp.open("GET", 'like/'+id, true);
+    xhttp.send();
+}
+
+
+function show_pub(file,lien)
+{
+
+    var xhttp = new XMLHttpRequest();
+    xhttp.onreadystatechange = function() {
+        if (this.readyState == 4 && this.status == 200) {
+
+            if(lien != "#")
+            {
+                document.getElementById("video_show").innerHTML="<a href='"+lien+"' target='_blank'><img src='"+file+"' width='100%'/><br><em style='text-align:center'>cliquez sur l'affiche pour en savoir plus</em></a>";
+
+            }else{
+                document.getElementById("video_show").innerHTML="<img src='"+file+"' width='100%'/><br>";
+
+            }
+        }
+    };
+    xhttp.open("GET", 'file.txt', true);
+    xhttp.send();
+}
+
+//new 17-02-2022
+
+function call_prec(id)
+{
+    document.getElementById("video_show").innerHTML="<video  src='' style='max-width: 100%' controls controlsList='nodownload'></video>"
+    id_get=id
+    var xhttp = new XMLHttpRequest();
+    xhttp.onreadystatechange = function() {
+        if (this.readyState == 4 && this.status == 200) {
+            document.getElementById("video_show").innerHTML=this.responseText;
+        }
+
+    };
+    xhttp.open("GET", 'call_controller_prec/'+id_get, true);
+    xhttp.send();
+}
+
+function  call_deo(id,type)
+{
+    document.getElementById("video_show").innerHTML="<video  src='' style='max-width: 100%' controls controlsList='nodownload'></video>"
+    var xhttp = new XMLHttpRequest();
+    xhttp.onreadystatechange = function() {
+        if (this.readyState == 4 && this.status == 200) {
+            document.getElementById("video_show").innerHTML=this.responseText;
+        }
+
+    };
+    xhttp.open("GET", 'call_deo/'+id+'/'+type, true);
+    xhttp.send();
+}
+function close_modal()
+{
+    document.getElementById('video_player').pause();
+}

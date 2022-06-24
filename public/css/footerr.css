@@ -1,0 +1,83 @@
+footer li {
+    list-style-type: none;
+}
+
+
+
+footer{
+    margin-top: 85px;
+    width: 100%;
+    color: white;
+    display: flex;
+    flex-direction: column;
+    background: #212529;
+    gap: 2.5rem;
+    align-items: center;
+    justify-content: center;
+    padding: 2.5rem 0 1.5rem 0;
+
+}
+footer .contact{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+footer .contact div{
+    display: flex;
+    flex-direction: row;
+    gap: 1.5rem;
+}
+footer .contact div span h3{
+    font-size: 20px;
+}
+footer .info {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+footer .info div{
+    display: flex;
+    flex-direction: row;
+    gap: 1.5rem;
+}
+
+
+
+/*****MEDIA QUERRY******/
+@media only screen and (min-width:500px){
+    .elmt_num{
+        padding-right: 75px;
+    }
+}
+
+@media only screen and (max-width:500px){
+    .elmt_num{
+        padding-right: 15px;
+    }
+    li{
+        list-style-type: none;
+    }
+    .titre_eveil{
+        padding-right: 23px;
+    }
+    .txt_telephone{
+        padding-right: 23px;
+    }
+    .li_txt{
+        padding-right: 20px;
+    }
+    .titre_eveil_h3{
+        padding-left: 8px;
+    }
+    footer .contact div{
+        flex-direction: column;
+        gap: 1rem;
+    }
+    footer .info div{
+        flex-direction: column;
+    }
+    /****POLICE***/
+    footer .contact div span h3{
+        font-size: 15px;
+    }
+}
