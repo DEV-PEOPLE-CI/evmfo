@@ -19,19 +19,17 @@
                     </ul>
                     <div class="social-media mobile_link">
                         <p class="mb-0 d-flex">
-                            <a href="https://web.facebook.com/EveilTeleOfficiel" class="d-flex align-items-center justify-content-center" target="_blank"><span class="fa fa-facebook"><i class="sr-only">Facebook</i></span></a>
-                            <a href="https://www.youtube.com/channel/UCXnihMyy6wLi6z99uOvuIGA" class="d-flex align-items-center justify-content-center" target="_blank"><span class="fa fa-youtube"><i class="sr-only">Youtube</i></span></a>
-                            <a href="https://wa.me/?text=Je vous invite à visiter ce site svp. https://www.eveilmedia.tv/ " class="d-flex align-items-center justify-content-center" target="_blank"><span class="fa fa-whatsapp"><i class="sr-only">Whatsapp</i></span></a>
-
-
+                            <a href="https://web.facebook.com/EveilTeleOfficiel" class="d-flex align-items-center justify-content-center" target="_blank" style="background: #3f61a7"><span class="fa fa-facebook"><i class="sr-only">Facebook</i></span></a>
+                            <a href="https://www.youtube.com/channel/UCXnihMyy6wLi6z99uOvuIGA" class="d-flex align-items-center justify-content-center" target="_blank" style="background: #cc0000" ><span class="fa fa-youtube"><i class="sr-only">Youtube</i></span></a>
+                            <a href="https://wa.me/?text=Je vous invite à visiter ce site svp. https://www.eveilmedia.tv/ " class="d-flex align-items-center justify-content-center" target="_blank" style="background: #08c040" ><span class="fa fa-whatsapp"><i class="sr-only">Youtube</i></span></a>
                         </p>
                     </div>
                 </div>
                 <div class="social-media pc_link">
                     <p class="mb-0 d-flex">
-                        <a href="https://web.facebook.com/EveilTeleOfficiel" class="d-flex align-items-center justify-content-center" target="_blank"><span class="fa fa-facebook"><i class="sr-only">Facebook</i></span></a>
-                        <a href="https://www.youtube.com/channel/UCXnihMyy6wLi6z99uOvuIGA" class="d-flex align-items-center justify-content-center" target="_blank"><span class="fa fa-youtube"><i class="sr-only">Youtube</i></span></a>
-                        <a href="https://wa.me/?text=Je vous invite à visiter ce site svp. https://www.eveilmedia.tv/ " class="d-flex align-items-center justify-content-center" target="_blank"><span class="fa fa-whatsapp"><i class="sr-only">Youtube</i></span></a>
+                        <a href="https://web.facebook.com/EveilTeleOfficiel" class="d-flex align-items-center justify-content-center" target="_blank" style="background: #3f61a7"><span class="fa fa-facebook"><i class="sr-only">Facebook</i></span></a>
+                        <a href="https://www.youtube.com/channel/UCXnihMyy6wLi6z99uOvuIGA" class="d-flex align-items-center justify-content-center" target="_blank" style="background: #cc0000" ><span class="fa fa-youtube"><i class="sr-only">Youtube</i></span></a>
+                        <a href="https://wa.me/?text=Je vous invite à visiter ce site svp. https://www.eveilmedia.tv/ " class="d-flex align-items-center justify-content-center" target="_blank" style="background: #08c040" ><span class="fa fa-whatsapp"><i class="sr-only">Youtube</i></span></a>
 
                     </p>
                 </div>

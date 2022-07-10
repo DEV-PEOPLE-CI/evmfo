@@ -1,5 +1,7 @@
 
-
+@php
+    $active = 1;
+@endphp
 @extends('template')<link rel="icon" type="image/png" sizes="16x16" href="{{asset('images/logo_eveil.png')}}">
 
 @section('content')
@@ -95,6 +97,114 @@
 
     </div>
 
+    <div class="container mt-5">
+        <h1 class="text-center mb-5">Nos Partenaires</h1>
+        @if(sizeof($partenaire) < 4)
+            <div class="row">
+                @foreach($partenaire as $item)
+
+                    <div class="col-md-4 d-flex justify-content-center mb-3">
+                        <a href="{{$item["link"]}}">
+                            <img src="{{$item["path"]}}" class="" width="100px" height=100px">
+                        </a>
+                    </div>
+
+                @endforeach
+            </div>
+        @else
+            <div class="carousel slide multi-item-carousel" id="theCarousel">
+                <div class="carousel-inner row w-100 mx-auto">
+
+                    @foreach($partenaire as $item)
+                        <div class="carousel-item col-md-4 {{($active == 1) ? 'active' : ''}}">
+                            <a href="{{$item["link"]}}">
+                                <img src="{{$item["path"]}}" class="img-fluid mx-auto d-block" width="100px" height=100px">
+                            </a>
+                        </div>
+                        <?php $active=0 ?>
+                    @endforeach
+                </div>
+                <a class="carousel-control-prev" href="#theCarousel" role="button" data-slide="prev">
+                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                    <span class="sr-only">Previous</span>
+                </a>
+                <a class="carousel-control-next" href="#theCarousel" role="button" data-slide="next">
+                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                    <span class="sr-only">Next</span>
+                </a>
+            </div>
+
+        @endif
+    </div>
+    </div>
+    <style>
+        body {
+            background: #333;
+            color: #ddd;
+        }
+        @media (min-width: 768px) {
+            .multi-item-carousel .carousel-inner .carousel-item {
+                margin-right: inherit;
+            }
+            .multi-item-carousel .carousel-inner .carousel-item.active + .carousel-item, .multi-item-carousel .carousel-inner .carousel-item.active + .carousel-item + .carousel-item {
+                display: block;
+            }
+            .multi-item-carousel .carousel-inner .carousel-item.active:not(.carousel-item-right):not(.carousel-item-left), .multi-item-carousel .carousel-inner .carousel-item.active:not(.carousel-item-right):not(.carousel-item-left) + .carousel-item, .multi-item-carousel .carousel-inner .carousel-item.active:not(.carousel-item-right):not(.carousel-item-left) + .carousel-item + .carousel-item {
+                transition: none;
+            }
+            .multi-item-carousel .carousel-inner .carousel-item.active + .carousel-item + .carousel-item + .carousel-item {
+                position: absolute;
+                top: 0;
+                right: -33.333333333333%;
+                z-index: -1;
+                display: block;
+                visibility: visible;
+            }
+            .multi-item-carousel .carousel-inner .carousel-item-next, .multi-item-carousel .carousel-inner .carousel-item-prev {
+                position: relative;
+                transform: translate3d(0,0,0);
+            }
+            .multi-item-carousel .carousel-inner .carousel-item-prev.carousel-item-right {
+                position: absolute;
+                top: 0;
+                left: 0;
+                z-index: -1;
+                display: block;
+                visibility: visible;
+            }
+            .multi-item-carousel .active.carousel-item-left + .carousel-item-next.carousel-item-left, .multi-item-carousel .carousel-item-next.carousel-item-left + .carousel-item, .multi-item-carousel .carousel-item-next.carousel-item-left + .carousel-item + .carousel-item, .multi-item-carousel .carousel-item-next.carousel-item-left + .carousel-item + .carousel-item + .carousel-item {
+                position: relative;
+                transform: translate3d(-100%,0,0);
+                visibility: visible;
+            }
+            .multi-item-carousel .active.carousel-item-right + .carousel-item-prev.carousel-item-right, .multi-item-carousel .carousel-item-prev.carousel-item-right + .carousel-item, .multi-item-carousel .carousel-item-prev.carousel-item-right + .carousel-item + .carousel-item, .multi-item-carousel .carousel-item-prev.carousel-item-right + .carousel-item + .carousel-item + .carousel-item {
+                position: relative;
+                transform: translate3d(100%,0,0);
+                display: block;
+                visibility: visible;
+            }
+        }
+    </style>
+    <script>
+        // Developed at agap2
+        // Based on:
+        // http://www.codeply.com/go/s3I9ivCBYH/multi-carousel-single-slide-bootstrap-4
+
+        $('.multi-item-carousel').on('slide.bs.carousel', function (e) {
+            let $e = $(e.relatedTarget),
+                itemsPerSlide = 3,
+                totalItems = $('.carousel-item', this).length,
+                $itemsContainer = $('.carousel-inner', this),
+                it = itemsPerSlide - (totalItems - $e.index());
+            if (it > 0) {
+                for (var i = 0; i < it; i++) {
+                    $('.carousel-item', this).eq(e.direction == "left" ? i : 0).
+                        // append slides to the end/beginning
+                        appendTo($itemsContainer);
+                }
+            }
+        });
+    </script>
 @endsection
 @include('include.modal')
 

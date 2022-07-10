@@ -22,6 +22,7 @@ class AcceuilController extends Controller
 
         $get_annonce=(new ApiController())->requestData('GET','announcement');
         $get_category=(new ApiController())->requestData('GET','category');
+        $get_partenaire=(new ApiController())->requestData('GET','partenaire');
 
 
         if(sizeof($get_annonce['items'])==0)
@@ -65,7 +66,7 @@ class AcceuilController extends Controller
             $lien3='#';
         }
 
-        return View('pages.acceuil',['data'=>'','categorie'=>$get_category['items'],'aff1'=>$aff1,'lien1'=>$lien1,'aff2'=>$aff2,'lien2'=>$lien2,'aff3'=>$aff3,'lien3'=>$lien3,'annonce'=>$annonce,'main_link'=>'active']);
+        return View('pages.acceuil',['data'=>'','categorie'=>$get_category['items'],'aff1'=>$aff1,'lien1'=>$lien1,'aff2'=>$aff2,'lien2'=>$lien2,'aff3'=>$aff3,'lien3'=>$lien3,'annonce'=>$annonce,'main_link'=>'active','partenaire'=>$get_partenaire['items']]);
     }
 
     function index()
