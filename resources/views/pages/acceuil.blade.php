@@ -1,6 +1,8 @@
 
 @php
     $active = 1;
+   $deo_count=0;
+   $pub_count=0;
 @endphp
 @extends('template')<link rel="icon" type="image/png" sizes="16x16" href="{{asset('images/logo_eveil.png')}}">
 
@@ -37,12 +39,8 @@
             </span>
             <div class="btn-prec"></div>
         </div>
-
-        @php
-            $pub_count=0;
-        @endphp
+{{--@dd($aff_nbr)--}}
         @foreach( $categorie as $media )
-            @php $pub_count+=1; @endphp
             <div class="col-md-4 main_card" data-aos="fade-up">
                 <div class="card text-white card-has-bg click-col card_img" style="background-image: url('{{$media['file']}}');background-size: 100% 100%;">
                     <div class="card-img-overlay d-flex flex-column">
@@ -58,40 +56,21 @@
 
             </div>
 
+            @php $deo_count+=1; @endphp
 
+            @if(sizeof($affiche) == 0 && $deo_count ==3)
+                <div class="main_card pub " ><img data-toggle="modal" data-target="#exampleModal" src="{{asset("images/PUB.png")}}" height="100%" width="100%"  class="" ></div>
+                @php
+                    $deo_count =0;
+                @endphp
+            @elseif($pub_count <= $aff_nbr-1 && $deo_count ==3)
+                <div class="main_card pub " ><img data-toggle="modal" data-target="#exampleModal" src="{{$affiche[$pub_count]['file']}}" height="100%" width="100%" onclick="show_pub('{{$affiche[$pub_count]['file']}}','{{$affiche[$pub_count]['link']}}')" class="" ></div>
+                @php
+                    $pub_count +=1;
+                    $deo_count =0;
+                @endphp
+            @endif
 
-            @switch($pub_count)
-                @case(5)
-                <div class="pub pub_first_mobile"><img  data-toggle="modal" data-target="#exampleModal" src="{{$aff1}}" height="100%" width="100%" onclick="show_pub('{{$aff1}}','{{$lien1}}')"/></div>
-                @break
-                @case(3)
-                <div class="pub pub_first_pc"><img   data-toggle="modal" data-target="#exampleModal" src="{{$aff1}}" height="100%" width="100%" onclick="show_pub('{{$aff1}}','{{$lien1}}')"/></div>
-                @break
-                @case(6)
-                <div class="txt bande">
-                    <div ><img src="{{asset('images/annonce_left_.png')}}" width="50px" height="50px"></div>
-                    <div class="f">
-                <span>
-                    @if($annonce == "ESPACE ANNONCEURS")
-                        <h4><marquee>{{$annonce}}</marquee></h4>
-                    @else
-                        <h4><marquee> @foreach($annonce as $q){{utf8_decode($q['content'])."  "}}@endforeach</marquee></h4>
-
-                    @endif
-                </span>
-                    </div>
-                    <div><img src="{{asset('images/annonce_right.png')}}" width="50px" height="50px"></div>
-                </div>
-                @break
-                @case(9)
-                <div class="main_card pub " ><img data-toggle="modal" data-target="#exampleModal" src="{{$aff2}}" height="100%" width="100%" onclick="show_pub('{{$aff2}}','{{$lien2}}')" class=""></div>
-                @break
-                @case(12)
-                <div class="main_card pub " ><img data-toggle="modal" data-target="#exampleModal" src="{{$aff3}}" height="100%" width="100%" onclick="show_pub('{{$aff3}}','{{$lien3}}')" class="" ></div>
-                @break
-                @default
-                {{''}}
-            @endswitch
 
         @endforeach
 

@@ -24,49 +24,67 @@ class AcceuilController extends Controller
         $get_category=(new ApiController())->requestData('GET','category');
         $get_partenaire=(new ApiController())->requestData('GET','partenaire');
 
-
         if(sizeof($get_annonce['items'])==0)
         {
             $annonce = 'ESPACE ANNONCEURS';
         }else{
             $annonce=$get_annonce['items'];
         }
+
+        #get deo number
+        $aff_nbr=intdiv(sizeof($get_category['items']),3);
+
         $get_media=(new ApiController())->requestData('GET','affiche');
-        if (sizeof($get_media['items'])>=3){
-            $aff1= $get_media['items'][sizeof($get_media['items'])-1]['file'];
-            $lien1=$get_media['items'][sizeof($get_media['items'])-1]['link'];
-            $aff2= $get_media['items'][sizeof($get_media['items'])-2]['file'];
-            $lien2=$get_media['items'][sizeof($get_media['items'])-2]['link'];
-            $aff3= $get_media['items'][sizeof($get_media['items'])-3]['file'];
-            $lien3=$get_media['items'][sizeof($get_media['items'])-3]['link'];
 
-        }else if(sizeof($get_media['items'])==2){
-            $aff1= $get_media['items'][sizeof($get_media['items'])-1]['file'];
-            $lien1=$get_media['items'][sizeof($get_media['items'])-1]['link'];
-            $aff2=$get_media['items'][sizeof($get_media['items'])-2]['file'];
-            $lien2=$get_media['items'][sizeof($get_media['items'])-2]['link'];
-            $aff3= 'images/PUB.png';
-            $lien3='#';
-        }
-        else if(sizeof($get_media['items'])==1){
-            $aff1= $get_media['items'][sizeof($get_media['items'])-1]['file'];
-            $lien1=$get_media['items'][sizeof($get_media['items'])-1]['link'];
-
-            $aff2= 'images/PUB.png';
-            $lien2='#';
-
-            $aff3= 'images/PUB.png';
-            $lien3='#';
+        if(sizeof($get_media['items'])==0)
+        {
+            $affiche = [];
         }else{
-            $aff1= 'images/PUB.png';
-            $lien1='#';
-            $aff2= 'images/PUB.png';
-            $lien2='#';
-            $aff3= 'images/PUB.png';
-            $lien3='#';
+            if (sizeof($get_media['items']) < $aff_nbr){
+                $affiche=$get_media['items'];
+                $aff_nbr = sizeof($get_media['items']);
+            }else{
+                $affiche=array_slice($get_media['items'],-$aff_nbr);
+            }
         }
 
-        return View('pages.acceuil',['data'=>'','categorie'=>$get_category['items'],'aff1'=>$aff1,'lien1'=>$lien1,'aff2'=>$aff2,'lien2'=>$lien2,'aff3'=>$aff3,'lien3'=>$lien3,'annonce'=>$annonce,'main_link'=>'active','partenaire'=>$get_partenaire['items']]);
+//        $get_media=(new ApiController())->requestData('GET','affiche');
+//        if (sizeof($get_media['items'])>=3){
+//            $aff1= $get_media['items'][sizeof($get_media['items'])-1]['file'];
+//            $lien1=$get_media['items'][sizeof($get_media['items'])-1]['link'];
+//            $aff2= $get_media['items'][sizeof($get_media['items'])-2]['file'];
+//            $lien2=$get_media['items'][sizeof($get_media['items'])-2]['link'];
+//            $aff3= $get_media['items'][sizeof($get_media['items'])-3]['file'];
+//            $lien3=$get_media['items'][sizeof($get_media['items'])-3]['link'];
+//
+//        }else if(sizeof($get_media['items'])==2){
+//            $aff1= $get_media['items'][sizeof($get_media['items'])-1]['file'];
+//            $lien1=$get_media['items'][sizeof($get_media['items'])-1]['link'];
+//            $aff2=$get_media['items'][sizeof($get_media['items'])-2]['file'];
+//            $lien2=$get_media['items'][sizeof($get_media['items'])-2]['link'];
+//            $aff3= 'images/PUB.png';
+//            $lien3='#';
+//        }
+//        else if(sizeof($get_media['items'])==1){
+//            $aff1= $get_media['items'][sizeof($get_media['items'])-1]['file'];
+//            $lien1=$get_media['items'][sizeof($get_media['items'])-1]['link'];
+//
+//            $aff2= 'images/PUB.png';
+//            $lien2='#';
+//
+//            $aff3= 'images/PUB.png';
+//            $lien3='#';
+//        }else{
+//            $aff1= 'images/PUB.png';
+//            $lien1='#';
+//            $aff2= 'images/PUB.png';
+//            $lien2='#';
+//            $aff3= 'images/PUB.png';
+//            $lien3='#';
+//        }
+
+        return View('pages.acceuil',['data'=>'','categorie'=>$get_category['items'],'annonce'=>$annonce,'main_link'=>'active','partenaire'=>$get_partenaire['items'],'aff_nbr'=>$aff_nbr,'affiche'=>$affiche]);
+//        return View('pages.acceuil',['data'=>'','categorie'=>$get_category['items'],'aff1'=>$aff1,'lien1'=>$lien1,'aff2'=>$aff2,'lien2'=>$lien2,'aff3'=>$aff3,'lien3'=>$lien3,'annonce'=>$annonce,'main_link'=>'active','partenaire'=>$get_partenaire['items'],'aff_nbr'=>$aff_nbr]);
     }
 
     function index()
