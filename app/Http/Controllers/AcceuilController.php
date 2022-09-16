@@ -12,9 +12,15 @@ use Illuminate\Support\Facades\Cookie;
 
 class AcceuilController extends Controller
 {
-    function lecteur_deo($title,$file,$id,$link_icon,$link,$description)
+    function lecteur_deo($title,$file,$id,$link_icon,$link,$description,$commentaire)
     {
-        return View('include.lecteur',['title'=>$title,'file'=>$file,'id'=>$id,'link_icon'=>$link_icon,'link'=>$link,'description'=>$description]);
+        if ($title == "null"){
+            return View('include.lecteur',['title'=>"null",'file'=>"null",'id'=>"null",'link_icon'=>"null",'link'=>"null",'description'=>"null",'commentaire'=>"null"]);
+
+        }else{
+            return View('include.lecteur',['title'=>$title,'file'=>$file,'id'=>$id,'link_icon'=>$link_icon,'link'=>$link,'description'=>$description,"commentaire"=>$commentaire]);
+
+        }
     }
 
     function Acceuil()
@@ -102,24 +108,38 @@ class AcceuilController extends Controller
 
 
         $get_media=(new ApiController())->requestData('GET','media/category/'.$id);
-        $vue=(new ApiController())->requestData('patch','media/vue/'.$get_media['item']['id']);
-        $link= urlencode(str_replace('https://','','www.eveilmedia.tv/video/'.$get_media['item']['id'].')'));
-        $title=utf8_decode($get_media['item']['title']);
-        $file=$get_media['item']['file'];
-        $id=$get_media['item']['id'];
-        $description=utf8_decode($get_media['item']['description']);
-        if (Cookie::has($get_media['item']['id'])) {
-            //si le cookie existe il faut faire une dislike dislike
 
-            $link_icon ="skyblue";
-        } else {
-            // si le coookie n'existe pas il faut faire un like
-            $link_icon ="white";
+        if ($get_media['item'] == null){
+
+            $result= $this->lecteur_deo("null","null","null","null","null","null","null");
+
+        }else{
+
+            $get_commentaire=(new ApiController())->requestData('GET','commentaire/'.$get_media['item']['id']);
+            if ($get_commentaire['items'] != null){
+                $commentaire = $get_commentaire['items'];
+            }else{
+                $commentaire = "null";
+            }
+            $vue=(new ApiController())->requestData('patch','media/vue/'.$get_media['item']['id']);
+            $link= urlencode(str_replace('https://','','www.eveilmedia.tv/video/'.$get_media['item']['id'].')'));
+            $title=utf8_decode($get_media['item']['title']);
+            $file=$get_media['item']['file'];
+            $id=$get_media['item']['id'];
+            $description=utf8_decode($get_media['item']['description']);
+            if (Cookie::has($get_media['item']['id'])) {
+                //si le cookie existe il faut faire une dislike dislike
+
+                $link_icon ="skyblue";
+            } else {
+                // si le coookie n'existe pas il faut faire un like
+                $link_icon ="white";
+            }
+            $result= $this->lecteur_deo($title,$file,$id,$link_icon,$link,$description,$commentaire);
+
         }
 
-        $result= $this->lecteur_deo($title,$file,$id,$link_icon,$link,$description);
         return $result;
-
 
     }
     function  call_son($id)
@@ -173,26 +193,44 @@ class AcceuilController extends Controller
         return View('pages.prec',['data'=>'','categorie'=>$get_category['items'],'precedemment_link'=>'active','annonce'=>$annonce]);
     }
     function call_controller_prec($id)
+
     {
+//        $get_media=(new ApiController())->requestData('GET','media/category/'.$id);
         $get_media=(new ApiController())->requestData('get','previously/category/'.$id);
-        $vue=(new ApiController())->requestData('patch','media/vue/'.$get_media['item']['id']);
-        $link= urlencode(str_replace('https://','','www.eveilmedia.tv/video/'.$get_media['item']['id'].')'));
-        $title=utf8_decode($get_media['item']['title']);
-        $title=utf8_decode($get_media['item']['title']);
-        $file=$get_media['item']['file'];
-        $id=$get_media['item']['id'];
 
-        if (Cookie::has($get_media['item']['id'])) {
-            //si le cookie existe il faut faire une dislike dislike
+        if ($get_media['item'] == null){
 
-            $link_icon ="skyblue";
-        } else {
-            // si le coookie n'existe pas il faut faire un like
-            $link_icon ="white";
+            $result= $this->lecteur_deo("null","null","null","null","null","null","null");
+
+        }else{
+
+            $get_commentaire=(new ApiController())->requestData('GET','commentaire/'.$get_media['item']['id']);
+            if ($get_commentaire['items'] != null){
+                $commentaire = $get_commentaire['items'];
+            }else{
+                $commentaire = "null";
+            }
+            $vue=(new ApiController())->requestData('patch','media/vue/'.$get_media['item']['id']);
+            $link= urlencode(str_replace('https://','','www.eveilmedia.tv/video/'.$get_media['item']['id'].')'));
+            $title=utf8_decode($get_media['item']['title']);
+            $file=$get_media['item']['file'];
+            $id=$get_media['item']['id'];
+            $description=utf8_decode($get_media['item']['description']);
+            if (Cookie::has($get_media['item']['id'])) {
+                //si le cookie existe il faut faire une dislike dislike
+
+                $link_icon ="skyblue";
+            } else {
+                // si le coookie n'existe pas il faut faire un like
+                $link_icon ="white";
+            }
+            $result= $this->lecteur_deo($title,$file,$id,$link_icon,$link,$description,$commentaire);
+
         }
-        $description=utf8_decode($get_media['item']['description']);
-        $result= $this->lecteur_deo($title,$file,$id,$link_icon,$link,$description);
+
         return $result;
+
+
     }
     function Archive()
     {
@@ -214,40 +252,80 @@ class AcceuilController extends Controller
             $get_media=(new ApiController())->requestData('GET','media/'.$id);
 
         }
-        $vue=(new ApiController())->requestData('patch','media/vue/'.$get_media['item']['id']);
-        $link= urlencode(str_replace('https://','','www.eveilmedia.tv/video/'.$get_media['item']['id'].')'));
-        $title=utf8_decode($get_media['item']['title']);
-        $file=$get_media['item']['file'];
-        $id=$get_media['item']['id'];
-        $description=utf8_decode($get_media['item']['description']);
-        if (Cookie::has($get_media['item']['id'])) {
-            //si le cookie existe il faut faire une dislike dislike
+        if ($get_media['item'] == null){
 
-            $link_icon ="skyblue";
-        } else {
-            // si le coookie n'existe pas il faut faire un like
-            $link_icon ="white";
+            $result= $this->lecteur_deo("null","null","null","null","null","null","null");
+
+        }else{
+
+            $get_commentaire=(new ApiController())->requestData('GET','commentaire/'.$get_media['item']['id']);
+            if ($get_commentaire['items'] != null){
+                $commentaire = $get_commentaire['items'];
+            }else{
+                $commentaire = "null";
+            }
+            $vue=(new ApiController())->requestData('patch','media/vue/'.$get_media['item']['id']);
+            $link= urlencode(str_replace('https://','','www.eveilmedia.tv/video/'.$get_media['item']['id'].')'));
+            $title=utf8_decode($get_media['item']['title']);
+            $file=$get_media['item']['file'];
+            $id=$get_media['item']['id'];
+            $description=utf8_decode($get_media['item']['description']);
+            if (Cookie::has($get_media['item']['id'])) {
+                //si le cookie existe il faut faire une dislike dislike
+
+                $link_icon ="skyblue";
+            } else {
+                // si le coookie n'existe pas il faut faire un like
+                $link_icon ="white";
+            }
+            if (Cookie::has($get_media['item']['id'])) {
+                //si le cookie existe il faut faire une dislike dislike
+
+                $link_icon ="skyblue";
+            } else {
+                // si le coookie n'existe pas il faut faire un like
+                $link_icon ="white";
+            }
+            $result= $this->lecteur_deo($title,$file,$id,$link_icon,$link,$description,$commentaire);
+
         }
 
-        $result= $this->lecteur_deo($title,$file,$id,$link_icon,$link,$description);
         return $result;
+
     }
     function call_deo_one_page($id)
     {
-        $get_media=(new ApiController())->requestData('GET','media/'.$id);
-        $vue=(new ApiController())->requestData('patch','media/vue/'.$get_media['item']['id']);
-        $title=utf8_decode($get_media['item']['title']);
-        $description=utf8_decode($get_media['item']['description']);
-        $link= urlencode(str_replace('https://','','www.eveilmedia.tv/video/'.$get_media['item']['id'].')'));
-        if (Cookie::has($get_media['item']['id'])) {
-            //si le cookie existe il faut faire une dislike dislike
 
-            $link_icon ="skyblue";
-        } else {
-            // si le coookie n'existe pas il faut faire un like
-            $link_icon ="white";
+        $get_media=(new ApiController())->requestData('GET','media/'.$id);
+        if ($get_media['item'] == null){
+
+            return view('pages.video',['title'=>"null",'description'=>"null",'link'=>"null",'id_video'=>"null",'link_fb'=>"null",'link_icon'=>"null"]);
+
+//            $result= $this->lecteur_deo("null","null","null","null","null","null","null");
+
+        }else{
+            $get_commentaire=(new ApiController())->requestData('GET','commentaire/'.$get_media['item']['id']);
+            if ($get_commentaire['items'] != null){
+                $commentaire = $get_commentaire['items'];
+            }else{
+                $commentaire = "null";
+            }
+            $vue=(new ApiController())->requestData('patch','media/vue/'.$get_media['item']['id']);
+            $title=utf8_decode($get_media['item']['title']);
+            $description=utf8_decode($get_media['item']['description']);
+            $link= urlencode(str_replace('https://','','www.eveilmedia.tv/video/'.$get_media['item']['id'].')'));
+            if (Cookie::has($get_media['item']['id'])) {
+                //si le cookie existe il faut faire une dislike dislike
+
+                $link_icon ="skyblue";
+            } else {
+                // si le coookie n'existe pas il faut faire un like
+                $link_icon ="white";
+            }
         }
-        return view('pages.video',['title'=>$title,'description'=>$description,'link'=>$get_media['item']['file'],'id_video'=>$get_media['item']['id'],'link_fb'=>$link,'link_icon'=>$link_icon]);
+
+
+        return view('pages.video',['title'=>$title,'description'=>$description,'link'=>$get_media['item']['file'],'id_video'=>$get_media['item']['id'],'link_fb'=>$link,'link_icon'=>$link_icon,"commentaire"=>$commentaire]);
     }
     function  humour()
     {
