@@ -34,14 +34,19 @@ function send_comments()
 {
     full_name=document.getElementById('fullname').value;
     media_id=document.getElementById('hidden_input').value;
-    content=document.getElementById('msg').value;
+    content=(document.getElementById('msg').value);
+    console.log("decode",decodeURI(content));
     var xhttp = new XMLHttpRequest();
-    xhttp.onreadystatechange = function() {
-        if (this.readyState == 4 && this.status == 200) {
+    alert('vous avez commenté');
+    // xhttp.onreadystatechange = function() {
+    //     if (this.readyState == 4 && this.status == 200) {
+    //
+    //         alert('vous avez commenté');
+    //     }
+    // };
+    console.log("comment xend")
+    $("#collapseExample").collapse('hide')
 
-            alert('vous avez commenté');
-        }
-    };
     xhttp.open("get", 'send_commentaire/'+media_id+'/'+full_name+'/'+content, true);
     xhttp.send();
 }

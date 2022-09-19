@@ -7,7 +7,6 @@
 @extends('template')<link rel="icon" type="image/png" sizes="16x16" href="{{asset('images/logo_eveil.png')}}">
 
 @section('content')
-
     <div class="row" >
         <div class="txt bande">
             <div ><img src="{{asset('images/annonce_left_.png')}}" width="50px" height="50px"></div>

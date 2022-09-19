@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use GuzzleHttp\Exception\GuzzleException;
 use Illuminate\View\View;
 use Illuminate\Support\Facades\Cookie;
+use Exception;
 
 
 
@@ -27,7 +28,7 @@ class AcceuilController extends Controller
     {
 
         $get_annonce=(new ApiController())->requestData('GET','announcement');
-        $get_category=(new ApiController())->requestData('GET','category');
+        $get_category=(new ApiController())->requestData('GET','category/video-presence');
         $get_partenaire=(new ApiController())->requestData('GET','partenaire');
 
         if(sizeof($get_annonce['items'])==0)
@@ -148,12 +149,35 @@ class AcceuilController extends Controller
         return "1";
     }
     public function createCommentaire($media_id,$full_name,$content){
+                    $out = new \Symfony\Component\Console\Output\ConsoleOutput();
+//
+//        $out->writeln("content");
+        $out->writeln("content".$full_name);
+        $out->writeln("content encode".urlencode($content));
+        $out->writeln("content decode".urldecode($content));
+//        return error_log('Some message here.');
+//        try {
+//
+//        $api = new ApiController();
+//        $data = $api->sendData('POST','/commentaire',[
+//            'media_id' => $media_id,
+//            'fullname' =>$full_name,
+//            'content' =>urldecode($content)
+//        ]);
+//            $out = new \Symfony\Component\Console\Output\ConsoleOutput();
+//            $out->writeln("content",$content);
+//            $out->writeln("content decode",urldecode($content));
+//
+//        }catch (Exception $e){
+//            $out = new \Symfony\Component\Console\Output\ConsoleOutput();
+//            $out->writeln("Hello from Terminal",$e);
+//        }
 
         $api = new ApiController();
         $data = $api->sendData('POST','/commentaire',[
             'media_id' => $media_id,
             'fullname' =>$full_name,
-            'content' => $content
+            'content' =>urlencode($content)
         ]);
         //$session = $api->setMessage('Opération éffectuée','Une erreur s\'est produite',$data->status);
         //return redirect('commentaire');*/

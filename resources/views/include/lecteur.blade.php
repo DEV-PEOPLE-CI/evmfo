@@ -29,7 +29,7 @@
                         <p>
                             <b>{{$item["fullname"]}}</b>
                             <br/>
-                            <small>{{$item["content"]}}</small>
+                            <small>{{urldecode(utf8_decode($item["content"]))}}</small>
                         </p>
 
                     </div>
