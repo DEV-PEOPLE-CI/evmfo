@@ -15,7 +15,7 @@
                         <!-- <li class="nav-item {{isset($humour_link) ? 'active': ''  }}"><a href="/sport_et_culture" class="nav-link first_link">SPORTS - MUSIQUE - CULTURE</a></li> -->
                         <!--<li class="nav-item {{isset($precedemment_link) ? 'active': ''  }}"><a href="/precedemment" class="nav-link">Precedemment</a></li>-->
                         <!--<li class="nav-item {{isset($live_link) ? 'active': ''  }}" ><a href="/live" class="nav-link" id="link_direct_pc">Direct</a></li>-->
-                        <li class="nav-item {{isset($archive_link) ? 'active': ''  }}"><a href="/archive" class="nav-link">Archives</a></li>
+{{--                        <li class="nav-item {{isset($archive_link) ? 'active': ''  }}"><a href="/archive" class="nav-link">Archives</a></li>--}}
                     </ul>
                     <div class="social-media mobile_link">
                         <p class="mb-0 d-flex">

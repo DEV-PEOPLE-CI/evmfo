@@ -32,7 +32,7 @@ Route::get('like/{id}',[AcceuilController::class,'like']);
 // Route::get('precedemment',[AcceuilController::class,'prec']);
 Route::get('call_controller_prec/{id}',[AcceuilController::class,'call_controller_prec']);
 
-Route::get('archive',[AcceuilController::class,'Archive']);
+//Route::get('archive',[AcceuilController::class,'Archive']);
 Route::get('call_deo/{id}/{type}',[AcceuilController::class,'call_deo']);
 Route::get('video/{id}',[AcceuilController::class,'call_deo_one_page']);
 
