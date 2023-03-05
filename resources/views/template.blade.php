@@ -31,13 +31,14 @@
     <!--function ajax-->
 
     <script type="text/javascript" src="{{asset('js/ajax_code.js')}}"></script>
-    
+
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-LPDCJBXLJN"></script>
+    <link rel="stylesheet" href="https://cdn.plyr.io/3.7.3/plyr.css" />
     <script>
       window.dataLayer = window.dataLayer || [];
       function gtag(){dataLayer.push(arguments);}
       gtag('js', new Date());
-    
+
       gtag('config', 'G-LPDCJBXLJN');
     </script>
 
@@ -54,6 +55,7 @@
 
 <!-- @include('include.link_humour') -->
 <div class="container-fluid  body_content" >
+
    @yield('content')
 </div>
 
@@ -84,8 +86,59 @@
 
 <script src="{{asset('js/player.js')}}"></script>
 <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+<script src="https://cdn.plyr.io/3.7.3/plyr.js"></script>
+
 <script>
     AOS.init();
 </script>
 
+<script>
+    document.addEventListener('DOMContentLoaded', () => {
+        // This is the bare minimum JavaScript. You can opt to pass no arguments to setup.
+        const player = new Plyr('#player');
+
+        // Expose
+        window.player = player;
+
+        // Bind event listener
+        function on(selector, type, callback) {
+            document.querySelector(selector).addEventListener(type, callback, false);
+        }
+
+        // Play
+        on('.js-play', 'click', () => {
+            player.play();
+        });
+
+        // Pause
+        on('.js-pause', 'click', () => {
+            player.pause();
+        });
+
+        // Stop
+        on('.js-stop', 'click', () => {
+            player.stop();
+        });
+
+        // Rewind
+        on('.js-rewind', 'click', () => {
+            player.rewind();
+        });
+
+        // Forward
+        on('.js-forward', 'click', () => {
+            player.forward();
+        });
+    });
+</script>
+
+<style>
+
+    /* This is purely for the demo */
+
+    .plyr {
+        border-radius: 4px;
+        margin-bottom: 15px;
+    }
+</style>
 
