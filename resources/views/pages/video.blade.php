@@ -11,7 +11,7 @@
 
         @else
             <div class='modal-body container' style='text-align:center;'>
-                <video controls  playsinline poster="https://cdn.plyr.io/static/demo/View_From_A_Blue_Moon_Trailer-HD.jpg" id="player">
+                <video controls  playsinline poster="https://cdn.plyr.io/static/demo/View_From_A_Blue_Moon_Trailer-HD.jpg" id="player" >
                     <!-- Video files -->
                     <source src="{{$link}}" type="video/mp4" size="576">
                     <source src="https://cdn.plyr.io/static/demo/View_From_A_Blue_Moon_Trailer-720p.mp4" type="video/mp4" size="720">
@@ -79,5 +79,6 @@
     }
 
 </style>
+
 
 

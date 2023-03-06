@@ -1,16 +1,59 @@
-function call(id) {
-    document.getElementById("video_show").innerHTML="<video  src='' style='max-width: 100%' controls controlsList='nodownload'>\n" +
-        "                   </video>"
-    id_get=id
-    var xhttp = new XMLHttpRequest();
-    xhttp.onreadystatechange = function() {
-        if (this.readyState == 4 && this.status == 200) {
-            document.getElementById("video_show").innerHTML=this.responseText;
+function videoPlayer(idPlayer) {
+    console.log("player==>", idPlayer)
 
-        }
-    };
-    xhttp.open("GET", 'call_controller/'+id_get, true);
-    xhttp.send();
+    console.log("load video")
+    // This is the bare minimum JavaScript. You can opt to pass no arguments to setup.
+    const player = new Plyr('#' + idPlayer);
+
+    // Expose
+    window.player = player;
+
+    // Bind event listener
+    function on(selector, type, callback) {
+        document.querySelector(selector).addEventListener(type, callback, false);
+    }
+
+    player.play();
+
+
+    // Play
+    on('.js-play', 'click', () => {
+        player.play();
+    });
+
+    // Pause
+    on('.js-pause', 'click', () => {
+        player.pause();
+    });
+
+    // Stop
+    on('.js-stop', 'click', () => {
+        player.stop();
+    });
+
+    // Rewind
+    on('.js-rewind', 'click', () => {
+        player.rewind();
+    });
+
+    // Forward
+    on('.js-forward', 'click', () => {
+        player.forward();
+    });
+}
+
+function call(id) {
+
+    $.get('/call_controller/'+id, function(data) {
+        console.log("data--",data)
+        // Update the modal body with the response
+        $('#exampleModal .modal-body').html(data);
+
+        // Show the modal
+        $('#exampleModal').modal('show');
+    });
+
+
 }
 
 function play(id)
@@ -128,5 +171,6 @@ function  call_deo(id,type)
 }
 function close_modal()
 {
-    document.getElementById('video_player').pause();
+    document.getElementById('player').pause();
 }
+

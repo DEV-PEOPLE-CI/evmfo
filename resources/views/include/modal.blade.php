@@ -12,7 +12,7 @@
                     <span aria-hidden="true" style="color: white">&times;</span>
                 </button>
             </div>
-            <div class="modal-body container" id="video_show" style="background: black">
+            <div class="modal-body" id="video_show" style="background: black">
                 ...
             </div>
 

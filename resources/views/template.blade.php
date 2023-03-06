@@ -87,6 +87,7 @@
 <script src="{{asset('js/player.js')}}"></script>
 <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
 <script src="https://cdn.plyr.io/3.7.3/plyr.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 
 <script>
     AOS.init();
@@ -104,9 +105,13 @@
         function on(selector, type, callback) {
             document.querySelector(selector).addEventListener(type, callback, false);
         }
+        player.play();
+
+
 
         // Play
         on('.js-play', 'click', () => {
+
             player.play();
         });
 
