@@ -46,7 +46,7 @@
 
                         <div class="figure">
                             <figcaption>
-                                    <img class="mr-3 rounded-circle video_play " type="button" data-toggle="modal"  data-target="#myModal" src="{{asset('images/play.png')}}" alt="Generic placeholder image" style="max-width:50px"  onclick="call({{$media['id']}})">
+                                    <img class="mr-3 rounded-circle video_play" type="button" data-toggle="modal"  data-target="#myModal" src="{{asset('images/play.png')}}" alt="Generic placeholder image" style="max-width:50px"  onclick="call({{$media['id']}})">
                                     <small>Lire</small>
 
                             </figcaption>

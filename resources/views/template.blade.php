@@ -100,9 +100,11 @@
     document.addEventListener('DOMContentLoaded', () => {
         // This is the bare minimum JavaScript. You can opt to pass no arguments to setup.
         const player = new Plyr('#player');
+        const video = new Plyr('#video_show');
 
         // Expose
         window.player = player;
+        window.player = video;
 
         // Bind event listener
         function on(selector, type, callback) {

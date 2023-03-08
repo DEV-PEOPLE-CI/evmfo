@@ -49,16 +49,26 @@ function call(id) {
     // player.setup();
 
     // $('#myModal').modal('show');
-    document.getElementById("video_show").innerHTML=""
-    var xhttp = new XMLHttpRequest();
-    xhttp.onreadystatechange = function() {
-        if (this.readyState == 4 && this.status == 200) {
-            document.getElementById("player").innerHTML=this.responseText;
-        }
+    // document.getElementById("video_block").innerHTML=""
+    // var xhttp = new XMLHttpRequest();
+    // xhttp.onreadystatechange = function() {
+    //     if (this.readyState == 4 && this.status == 200) {
+    //         document.getElementById("video_block").innerHTML=this.responseText;
+    //     }
+    //
+    // };
+    // xhttp.open("GET", 'call_controller/'+id, true);
+    // xhttp.send();
+    $('#myModal .modal-body').html("<video  src='' style='max-width: 100%' controls controlsList='nodownload'></video>");
 
-    };
-    xhttp.open("GET", 'call_controller/'+id, true);
-    xhttp.send();
+    $.get('/call_controller/'+id, function(data) {
+        console.log("data--",data)
+        // Update the modal body with the response
+        $('#myModal .modal-body').html(data);
+
+        // Show the modal
+        // $('#exampleModal').modal('show');
+    });
 
     // $.get('/call_controller/'+id, function(data) {
     //     // console.log("data--",data)
@@ -191,6 +201,7 @@ function  call_deo(id,type)
 }
 function close_modal()
 {
+    console.log("close modal")
     document.getElementById('player').pause();
 }
 
