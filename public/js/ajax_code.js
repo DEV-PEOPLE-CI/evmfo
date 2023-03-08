@@ -43,14 +43,22 @@ function videoPlayer(idPlayer) {
 }
 
 function call(id) {
+    console.log("in call")
+    // const player = new Plyr('#player');
+    //
+    // player.setup();
+
+    // $('#myModal').modal('show');
 
     $.get('/call_controller/'+id, function(data) {
-        console.log("data--",data)
+        // console.log("data--",data)
+        // player.setup();
+
         // Update the modal body with the response
-        $('#exampleModal .modal-body').html(data);
+        $('#myModal #player').html(data);
 
         // Show the modal
-        $('#exampleModal').modal('show');
+        // $('#myModal').modal('show');
     });
 
 

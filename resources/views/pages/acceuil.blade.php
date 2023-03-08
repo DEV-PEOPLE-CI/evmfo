@@ -43,10 +43,12 @@
             <div class="col-md-4 main_card" data-aos="fade-up">
                 <div class="card text-white card-has-bg click-col card_img" style="background-image: url('{{$media['file']}}');background-size: 100% 100%;">
                     <div class="card-img-overlay d-flex flex-column">
+
                         <div class="figure">
                             <figcaption>
-                                <img class="mr-3 rounded-circle video_play " data-toggle="modal"  data-target="#exampleModal" src="{{asset('images/play.png')}}" alt="Generic placeholder image" style="max-width:50px"  onclick="call({{$media['id']}})">
-                                <small>Lire</small>
+                                    <img class="mr-3 rounded-circle video_play " type="button" data-toggle="modal"  data-target="#myModal" src="{{asset('images/play.png')}}" alt="Generic placeholder image" style="max-width:50px"  onclick="call({{$media['id']}})">
+                                    <small>Lire</small>
+
                             </figcaption>
                         </div>
 
@@ -182,7 +184,14 @@
                 }
             }
         });
+
     </script>
+
+    <script>
+        const player = new Plyr('#player');
+
+    </script>
+
 @endsection
 @include('include.modal')
 
