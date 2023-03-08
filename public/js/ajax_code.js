@@ -49,17 +49,27 @@ function call(id) {
     // player.setup();
 
     // $('#myModal').modal('show');
+    document.getElementById("video_show").innerHTML=""
+    var xhttp = new XMLHttpRequest();
+    xhttp.onreadystatechange = function() {
+        if (this.readyState == 4 && this.status == 200) {
+            document.getElementById("player").innerHTML=this.responseText;
+        }
 
-    $.get('/call_controller/'+id, function(data) {
-        // console.log("data--",data)
-        // player.setup();
+    };
+    xhttp.open("GET", 'call_controller/'+id, true);
+    xhttp.send();
 
-        // Update the modal body with the response
-        $('#myModal #player').html(data);
-
-        // Show the modal
-        // $('#myModal').modal('show');
-    });
+    // $.get('/call_controller/'+id, function(data) {
+    //     // console.log("data--",data)
+    //     // player.setup();
+    //
+    //     // Update the modal body with the response
+    //     $('#myModal #video_show').html(data);
+    //
+    //     // Show the modal
+    //     // $('#myModal').modal('show');
+    // });
 
 
 }
@@ -129,7 +139,7 @@ function like(id)
 function show_pub(file,lien)
 {
 
-    document.getElementById("video_show").innerHTML="";
+   document.getElementById("pub_show").innerHTML="";
 
     var xhttp = new XMLHttpRequest();
     xhttp.onreadystatechange = function() {
@@ -137,10 +147,10 @@ function show_pub(file,lien)
 
             if(lien != "#")
             {
-                document.getElementById("video_show").innerHTML="<a href='"+lien+"' target='_blank'><img src='"+file+"' width='100%'/><br><em style='text-align:center'>cliquez sur l'affiche pour en savoir plus</em></a>";
+                document.getElementById("pub_show").innerHTML="<a href='"+lien+"' target='_blank'><img src='"+file+"' width='100%'/><br><em style='text-align:center'>cliquez sur l'affiche pour en savoir plus</em></a>";
 
             }else{
-                document.getElementById("video_show").innerHTML="<img src='"+file+"' width='100%'/><br>";
+                document.getElementById("pub_show").innerHTML="<img src='"+file+"' width='100%'/><br>";
 
             }
         }
