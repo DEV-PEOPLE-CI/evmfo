@@ -129,6 +129,8 @@ function like(id)
 function show_pub(file,lien)
 {
 
+    document.getElementById("video_show").innerHTML="";
+
     var xhttp = new XMLHttpRequest();
     xhttp.onreadystatechange = function() {
         if (this.readyState == 4 && this.status == 200) {

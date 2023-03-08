@@ -60,12 +60,12 @@
             @php $deo_count+=1; @endphp
 
             @if(sizeof($affiche) == 0 && $deo_count ==3)
-                <div class="main_card pub " ><img data-toggle="modal" data-target="#exampleModal" src="{{asset("images/PUB.png")}}" height="100%" width="100%"  class="" ></div>
+                <div class="main_card pub " ><img data-toggle="modal" data-target="#myModal" src="{{asset("images/PUB.png")}}" height="100%" width="100%"  class="" ></div>
                 @php
                     $deo_count =0;
                 @endphp
             @elseif($pub_count <= $aff_nbr-1 && $deo_count ==3)
-                <div class="main_card pub " ><img data-toggle="modal" data-target="#exampleModal" src="{{$affiche[$pub_count]['file']}}" height="100%" width="100%" onclick="show_pub('{{$affiche[$pub_count]['file']}}','{{$affiche[$pub_count]['link']}}')" class="" ></div>
+                <div class="main_card pub " ><img data-toggle="modal" data-target="#myModal" src="{{$affiche[$pub_count]['file']}}" height="100%" width="100%" onclick="show_pub('{{$affiche[$pub_count]['file']}}','{{$affiche[$pub_count]['link']}}')" class="" ></div>
                 @php
                     $pub_count +=1;
                     $deo_count =0;

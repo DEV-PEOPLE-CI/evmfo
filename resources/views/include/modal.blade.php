@@ -28,9 +28,12 @@
                                         <span aria-hidden="true" style="color: white">&times;</span>
                 </button>
             </div>
-            <div class="modal-body">
-                <video  controls playsinline style='max-width: 100%' id='player'>
-                </video>
+            <div class="modal-body" >
+                <div id="video_show">
+
+                </div>
+{{--                <video  controls playsinline style='max-width: 100%' id='player'>--}}
+{{--                </video>--}}
             </div>
         </div>
     </div>
