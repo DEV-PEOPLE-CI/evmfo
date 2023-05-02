@@ -55,6 +55,7 @@ function call(id) {
     //     if (this.readyState == 4 && this.status == 200) {
     //         document.getElementById("video_block").innerHTML=this.responseText;
     //     }
+    //     }
     //
     // };
     // xhttp.open("GET", 'call_controller/'+id, true);

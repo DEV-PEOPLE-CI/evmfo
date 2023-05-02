@@ -108,7 +108,7 @@ class AcceuilController extends Controller
     {
 
 
-        $get_media=(new ApiController())->requestData('GET','media/category/'.$id);
+            $get_media=(new ApiController())->requestData('GET','media/category/'.$id);
 
         if ($get_media['item'] == null){
 
@@ -125,7 +125,7 @@ class AcceuilController extends Controller
             $vue=(new ApiController())->requestData('patch','media/vue/'.$get_media['item']['id']);
             $link= urlencode(str_replace('https://','','www.eveilmedia.tv/video/'.$get_media['item']['id'].')'));
             $title=utf8_decode($get_media['item']['title']);
-            $file=$get_media['item']['file'];
+            $file=$get_media;
             $id=$get_media['item']['id'];
             $description=utf8_decode($get_media['item']['description']);
             if (Cookie::has($get_media['item']['id'])) {

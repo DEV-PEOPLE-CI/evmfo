@@ -47,8 +47,11 @@
 
     <title>Eveil media</title>
 
-
-
+    <meta property="og:title" content="Your Title Here" />
+    <meta property="og:description" content="Your Description Here" />
+    <meta property="og:image" content="Your Image URL Here" />
+    <meta property="og:url" content="Your URL Here" />
+    <meta property="og:type" content="Your Type Here" />
 
 </head>
 <body>
@@ -96,55 +99,55 @@
     AOS.init();
 </script>
 
-<script>
-    document.addEventListener('DOMContentLoaded', () => {
-        // This is the bare minimum JavaScript. You can opt to pass no arguments to setup.
-        const player = new Plyr('#player');
-        const video = new Plyr('#video_show');
+{{--<script>--}}
+{{--    document.addEventListener('DOMContentLoaded', () => {--}}
+{{--        // This is the bare minimum JavaScript. You can opt to pass no arguments to setup.--}}
+{{--        const player = new Plyr('#player');--}}
+{{--        const video = new Plyr('#video_show');--}}
 
-        // Expose
-        window.player = player;
-        window.player = video;
+{{--        // Expose--}}
+{{--        window.player = player;--}}
+{{--        window.player = video;--}}
 
-        // Bind event listener
-        function on(selector, type, callback) {
-            document.querySelector(selector).addEventListener(type, callback, false);
-        }
-        player.play();
+{{--        // Bind event listener--}}
+{{--        function on(selector, type, callback) {--}}
+{{--            document.querySelector(selector).addEventListener(type, callback, false);--}}
+{{--        }--}}
+{{--        player.play();--}}
 
 
 
-        // Play
-        on('.js-play', 'click', () => {
+{{--        // Play--}}
+{{--        on('.js-play', 'click', () => {--}}
 
-            player.play();
-        });
+{{--            player.play();--}}
+{{--        });--}}
 
-        // Pause
-        on('.js-pause', 'click', () => {
-            player.pause();
-        });
+{{--        // Pause--}}
+{{--        on('.js-pause', 'click', () => {--}}
+{{--            player.pause();--}}
+{{--        });--}}
 
-        // Stop
-        on('.js-stop', 'click', () => {
-            player.stop();
-        });
+{{--        // Stop--}}
+{{--        on('.js-stop', 'click', () => {--}}
+{{--            player.stop();--}}
+{{--        });--}}
 
-        // Rewind
-        on('.js-rewind', 'click', () => {
-            player.rewind();
-        });
+{{--        // Rewind--}}
+{{--        on('.js-rewind', 'click', () => {--}}
+{{--            player.rewind();--}}
+{{--        });--}}
 
-        // Forward
-        on('.js-forward', 'click', () => {
-            player.forward();
-        });
+{{--        // Forward--}}
+{{--        on('.js-forward', 'click', () => {--}}
+{{--            player.forward();--}}
+{{--        });--}}
 
-        $('#exampleModal').on('show.bs.modal', function () {
-            alert('hi')
-        })
-    });
-</script>
+{{--        $('#exampleModal').on('show.bs.modal', function () {--}}
+{{--            alert('hi')--}}
+{{--        })--}}
+{{--    });--}}
+{{--</script>--}}
 
 <style>
 
