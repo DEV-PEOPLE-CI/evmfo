@@ -97,6 +97,10 @@
 
 <script>
     AOS.init();
+    document.addEventListener('DOMContentLoaded', () => {
+        console.log("hello")
+        {{--console.log("file","{{ $file }}")--}}
+    })
 </script>
 
 {{--<script>--}}
@@ -149,7 +153,10 @@
 {{--    });--}}
 {{--</script>--}}
 
+
+
 <style>
+
 
     /* This is purely for the demo */
 

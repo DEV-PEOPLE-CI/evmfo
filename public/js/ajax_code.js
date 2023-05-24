@@ -43,7 +43,7 @@ function videoPlayer(idPlayer) {
 }
 
 function call(id) {
-    console.log("in call")
+    console.log("in call===>",id)
     // const player = new Plyr('#player');
     //
     // player.setup();
@@ -60,27 +60,40 @@ function call(id) {
     // };
     // xhttp.open("GET", 'call_controller/'+id, true);
     // xhttp.send();
-    $('#myModal .modal-body').html("<video  src='' style='max-width: 100%' controls controlsList='nodownload'></video>");
-
-    $.get('/call_controller/'+id, function(data) {
-        console.log("data--",data)
-        // Update the modal body with the response
-        $('#myModal .modal-body').html(data);
-
-        // Show the modal
-        // $('#exampleModal').modal('show');
-    });
-
-    // $.get('/call_controller/'+id, function(data) {
-    //     // console.log("data--",data)
-    //     // player.setup();
+    // $('#myModal .modal-body').html("<video  src='' style='max-width: 100%' controls controlsList='nodownload'></video>");
+    // // var xhttp = new XMLHttpRequest();
     //
+    // var xhttp = new XMLHttpRequest();
+    // xhttp.onreadystatechange = function() {
+    //     if (this.readyState == 4 && this.status == 200) {
+    //         document.getElementById("video_block").innerHTML=this.responseText;
+    //     }
+    //     }
+    //
+    //
+    // xhttp.open("GET", 'call_controller/'+id, true);
+    // xhttp.send()
+
+    //
+    // $.get('/call_controller/'+id, function(data) {
+    //     console.log("data--",data)
     //     // Update the modal body with the response
-    //     $('#myModal #video_show').html(data);
+    //     $('#myModal .modal-body').html(data);
     //
     //     // Show the modal
-    //     // $('#myModal').modal('show');
+    //     // $('#exampleModal').modal('show');
     // });
+
+    $.get('/call_controller/'+id, function(data) {
+        // console.log("data--",data)
+        // player.setup();
+
+        // Update the modal body with the response
+        $('#myModal #video_show').html(data);
+
+        // Show the modal
+        // $('#myModal').modal('show');
+    });
 
 
 }

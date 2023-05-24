@@ -1,15 +1,15 @@
-{{$file}}
+<link rel="stylesheet" href="https://cdn.plyr.io/3.7.7/plyr.css" />
 
 @if($title =="null")
     <h3>Aucune video pour l'instant</h3>
 
 @else
-    <video width="100%" id="evmvideo" class="w-100 rounded" height="400" controls preload="auto">
-        <source src="{{ $file }}" type="">
-    </video>
+{{--    <video width="100%" id="evmvideo" class="w-100 rounded" height="400" controls preload="auto">--}}
+{{--    </video>--}}
+
 {{--{--    <video  controls playsinline style='max-width: 100%' id='player'>--}}
 
-{{--        <!-- Video files -->--}}
+        <!-- Video files -->
 {{--        <source src="{{$file}}" type="video/mp4" size="576" >--}}
 {{--        <source src="https://cdn.plyr.io/static/demo/View_From_A_Blue_Moon_Trailer-720p.mp4" type="video/mp4" size="720">--}}
 {{--        <source src="https://cdn.plyr.io/static/demo/View_From_A_Blue_Moon_Trailer-1080p.mp4" type="video/mp4" size="1080">--}}
@@ -67,65 +67,71 @@
 {{--        console.log("hello")--}}
 {{--        const player = new Plyr('#player');--}}
 {{--        // Expose--}}
-{{--        window.player = player;--}}
+{{--        window.player = play!er;--}}
 
 {{--    });--}}
 {{--</script>--}}
-<script src="https://cdn.jsdelivr.net/npm/hls.js@latest"></script>
+{{--<script src="{{asset('plugins/hls/dist/hls.js')}}"></script>--}}
+
 <script src="https://cdn.plyr.io/3.7.7/plyr.js"></script>
 <script>
-    let video = document.getElementById('evmvideo');
-    let videoSrc = "{{$file}}";
-    let defaultOptions = {}
-    if (videoSrc.includes('.mp4')){
-        video.src = videoSrc
-    }else{
-        if (Hls.isSupported()) {
-            try {
-                let hls = new Hls();
-                hls.loadSource(videoSrc);
-                hls.attachMedia(video);
-                hls.on(Hls.Events.MANIFEST_PARSED, function () {
-                    const availableQualities = hls.levels.map((l)=> l.height)
-                    defaultOptions.controls = [
-                        'play-large',
-                        'play',
-                        'progress',
-                        'current-time',
-                        'duration',
-                        'mute',
-                        'volume',
-                        'captions',
-                        'settings',
-                        'pip',
-                        'airplay',
-                        'fullscreen',
-                    ];
+    document.addEventListener('DOMContentLoaded', () => {
+        console.log("hello 1")
+        {{--console.log("file","{{ $file }}")--}}
+    })
+    $(document).ready(function() {
+        console.log("hello 2")
+        {{--console.log("file","{{ $file }}")--}}
 
-                    defaultOptions.quality = {
-                        default: availableQualities[0],
-                        options: availableQualities,
-                        forced: true,
-                        onChange: (e) => updateQuality(e, hls)
-                    }
-                    hls.attachMedia(video);
-                    new Plyr(video, defaultOptions)
-                    window.hls = hls
-                })
-            }catch (e) {
-                video.src = videoSrc
-            }
-        }else{
-            video.src = videoSrc
-        }
-        function updateQuality(newQuality, hls){
-            console.log(hls)
-            hls.levels.forEach((level, levelIndex) => {
-                if(level.height === newQuality){
-                    hls.currentlevel = levelIndex
-                }
-            })
-        }
-    }
+        // const player = new Plyr('#player');
+        // Expose
+        // window.player = player;
+
+    });
+    {{--console.log("file","{{ $file }}")--}}
+    {{--let video = document.getElementById('evmvideo');--}}
+    {{--let videoSrc = "{{ $file }}";--}}
+    {{--let defaultOptions = {}--}}
+    {{--if (Hls.isSupported()) {--}}
+    {{--    let hls = new Hls();--}}
+    {{--    hls.loadSource(videoSrc);--}}
+    {{--    hls.attachMedia(video);--}}
+    {{--    hls.on(Hls.Events.MANIFEST_PARSED, function () {--}}
+    {{--        const availableQualities = hls.levels.map((l)=> l.height)--}}
+    {{--        defaultOptions.controls = [--}}
+    {{--            'play-large',--}}
+    {{--            'play',--}}
+    {{--            'progress',--}}
+    {{--            'current-time',--}}
+    {{--            'duration',--}}
+    {{--            'mute',--}}
+    {{--            'volume',--}}
+    {{--            'captions',--}}
+    {{--            'settings',--}}
+    {{--            'pip',--}}
+    {{--            'airplay',--}}
+    {{--            'fullscreen',--}}
+    {{--        ];--}}
+
+    {{--        defaultOptions.quality = {--}}
+    {{--            default: availableQualities[0],--}}
+    {{--            options: availableQualities,--}}
+    {{--            forced: true,--}}
+    {{--            onChange: (e) => updateQuality(e, hls)--}}
+    {{--        }--}}
+    {{--        hls.attachMedia(video);--}}
+    {{--        new Plyr(video, defaultOptions)--}}
+    {{--        window.hls = hls--}}
+    {{--    })--}}
+    {{--}--}}
+
+    {{--function updateQuality(newQuality, hls){--}}
+    {{--    console.log(hls)--}}
+    {{--    hls.levels.forEach((level, levelIndex) => {--}}
+    {{--        if(level.height === newQuality){--}}
+    {{--            hls.currentlevel = levelIndex--}}
+    {{--        }--}}
+    {{--    })--}}
+    {{--}--}}
 </script>
 
